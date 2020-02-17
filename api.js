@@ -1,6 +1,6 @@
+import uuid from "uuid";
 import moment from "moment";
 import Constants from "expo-constants";
-import uuid from "uuid";
 
 const { manifest } = Constants;
 const api = manifest.packagerOpts.dev
@@ -15,12 +15,7 @@ const url = `http://${api}/events`;
 export function getEvents() {
   return fetch(url)
     .then(response => response.json())
-    .then(events =>
-      events.map(e => ({
-        ...e,
-        date: new Date(e.date)
-      }))
-    );
+    .then(events => events.map(e => ({ ...e, date: new Date(e.date) })));
 }
 
 export function saveEvent({ title, date }) {

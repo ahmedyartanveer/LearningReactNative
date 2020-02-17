@@ -30,7 +30,9 @@ class EvenList extends Component {
     }, 1000);
 
     this.props.navigation.addListener("didFocus", () => {
-      getEvents().then(events => this.setState({ events }));
+      getEvents().then(events => {
+        this.setState({ events });
+      });
     });
   }
 
